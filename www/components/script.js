@@ -20,11 +20,13 @@ window.onload = function(){
 }
 
 var personagemObj;
+var obstaculo;
 
 function inicioJogo(){
   areaJogo.start();
   personagemObj = new componente("#F00", 10, 120, 30, 30);
-}
+  obstaculo = new componente('green', 150, 80, 120, 10);
+};
 
 let areaJogo = {
   canvas: document.createElement("canvas"),
@@ -36,8 +38,12 @@ let areaJogo = {
   },
   limpar: function(){
     this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
+  },
+
+  parar: function(){
+    clearInterval(this.interval);
   }
-}
+};
 
 function componente(cor, x, y, largura, altura){
   this.altura = altura,
@@ -47,34 +53,61 @@ function componente(cor, x, y, largura, altura){
   this.velocidadeX = 0;
   this.velocidadeY = 0;
   this.atualiza = function(){
-  contexto = areaJogo.context;
-  contexto.fillStyle = cor, 
-  contexto.fillRect(this.x, this.y, this.altura, this.largura);
+    contexto = areaJogo.context;
+    contexto.fillStyle = cor, 
+    contexto.fillRect(this.x, this.y, this.altura, this.largura);
   },
   this.novaPosicao = function(){
     this.x += this.velocidadeX;
     this.y += this.velocidadeY;
+  },
+  this.bater = function(obj){
+    //posicao do personagem
+    let esquerda = this.x;
+    let direita = this.x + this.largura;
+    let superior = this.y;
+    let inferior = this.y + this.altura;
+
+    //posicao do obstaculo
+    let objEsquerda = obj.x;
+    let objDireita = obj.x + obj.altura;
+    let objSuperior = obj.y;
+    let objInferior = obj.y + obj.largura;
+
+    let batida = true;
+
+    if (
+      (inferior < objSuperior ) || (superior > objInferior) || (direita < objEsquerda) || (esquerda > objDireita)
+    ){
+      batida = false;
+    }
+    return batida;
   }
-}
+};
 
 function atualizaAreaJogo(){
-  areaJogo.limpar();
-  personagemObj.novaPosicao();
-  personagemObj.atualiza();
-}
+  if(personagemObj.bater(obstaculo)){
+    areaJogo.parar();
+  } else {
+    areaJogo.limpar();
+    obstaculo.atualiza();
+    personagemObj.novaPosicao();
+    personagemObj.atualiza();
+  }
+};
 
 function subir(){
   personagemObj.velocidadeY -= 1;
-}
+};
 
 function descer(){
   personagemObj.velocidadeY += 1;
-}
+};
 
 function direita(){
   personagemObj.velocidadeX += 1;
-}
+};
 
 function esquerda(){
   personagemObj.velocidadeX -= 1;
-}
+};
