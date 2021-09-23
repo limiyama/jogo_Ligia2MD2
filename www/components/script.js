@@ -112,7 +112,7 @@ function componente(cor, x, y, largura, altura, tipo){
 function atualizaAreaJogo(){
   let x, y;
   
-  for(i = 0; i < obstaculo.lenght; i++){
+  for(i = 0; i < obstaculo.length; i++){
     if(personagemObj.bater(obstaculo[i])){
       areaJogo.parar();
       return;
@@ -134,13 +134,13 @@ function atualizaAreaJogo(){
     obstaculo.push(new componente('green',x,altura + vazio,x - altura - vazio,10));
   };
 
-  for(i = 0; i < obstaculo.lenght; i++){
+  for(i = 0; i < obstaculo.length; i++){
       obstaculo[i].x += -1;
       obstaculo[i].atualiza();
   };
 
     pontos.texto = "Pontos: " + areaJogo.frame;
-    //pontos.atualiza();
+    pontos.atualiza();
     personagemObj.novaPosicao();
     personagemObj.atualiza();
 };
