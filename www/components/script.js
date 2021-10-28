@@ -21,6 +21,22 @@ window.onload = function(){
     direita();
     setTimeout(parar, 1000);
   });
+
+  document.querySelector("#dark").addEventListener("click", function(){
+    document.querySelector("body").style.background = "#000";
+    document.querySelector("#subir").style.color = "#FFF";
+    document.querySelector("#descer").style.color = "#FFF";
+    document.querySelector("#esquerda").style.color = "#FFF";
+    document.querySelector("#direita").style.color = "#FFF";
+  });
+
+  document.querySelector("#light").addEventListener("click", function(){
+    document.querySelector("body").style.background = "#FFF";
+    document.querySelector("#subir").style.color = "#000";
+    document.querySelector("#descer").style.color = "#000";
+    document.querySelector("#esquerda").style.color = "#000";
+    document.querySelector("#direita").style.color = "#000";
+  });
 }
 
 var personagemObj;
@@ -62,14 +78,14 @@ function contarIntervalo(n){
 };
 
 function componente(cor, x, y, largura, altura, tipo){
-  this.tipo = tipo,
-  this.altura = altura,
-  this.largura = largura,
-  this.x = x,
-  this.y = y,
+  this.tipo = tipo;
+  this.altura = altura;
+  this.largura = largura;
+  this.x = x;
+  this.y = y;
   this.velocidadeX = 0;
   this.velocidadeY = 0;
-  this.texto = 0,
+  this.texto = 0;
   this.atualiza = function(){
     contexto = areaJogo.context;
     if(this.tipo == "texto"){
@@ -166,3 +182,4 @@ function parar(){
   personagemObj.velocidadeY = 0;
 }
 
+// mudar cor local storage

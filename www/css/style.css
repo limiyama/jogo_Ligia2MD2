@@ -1,5 +1,9 @@
 /**/
 
+body, html {
+  overflow-x: hidden
+}
+
 canvas {
   background-color: #ccc;
   width: 100%;
@@ -12,5 +16,12 @@ button {
 
 button svg {
   width: 40px;
+  height: 40px;
+}
+
+#dark, #light {
+  margin-left: 20px;
+  margin-top: 30px;
+  width: 150px;
   height: 40px;
 }
