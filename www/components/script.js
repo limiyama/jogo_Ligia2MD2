@@ -1,3 +1,4 @@
+
 // This is a JavaScript file
 window.onload = function(){
   inicioJogo();
@@ -28,6 +29,7 @@ window.onload = function(){
     document.querySelector("#descer").style.color = "#FFF";
     document.querySelector("#esquerda").style.color = "#FFF";
     document.querySelector("#direita").style.color = "#FFF";
+
   });
 
   document.querySelector("#light").addEventListener("click", function(){
@@ -63,7 +65,6 @@ let areaJogo = {
   limpar: function(){
     this.context.clearRect(0,0, this.canvas.width, this.canvas.height);
   },
-
   parar: function(){
     clearInterval(this.interval);
   }
@@ -120,6 +121,7 @@ function componente(cor, x, y, largura, altura, tipo){
       (inferior < objSuperior ) || (superior > objInferior) || (direita < objEsquerda) || (esquerda > objDireita)
     ){
       batida = false;
+      
     }
     return batida;
   }
@@ -181,5 +183,3 @@ function parar(){
   personagemObj.velocidadeX = 0;
   personagemObj.velocidadeY = 0;
 }
-
-// mudar cor local storage
