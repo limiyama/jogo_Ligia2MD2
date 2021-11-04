@@ -13,9 +13,9 @@ window.onload = function(){
     localStorage.setItem("claro", JSON.stringify(claro));
 
     let dark = {
-      canvas: "#ccc",
+      canvas: "#A9A9A9",
       body: "#000",
-      botao: "#808080"
+      botao: "#F5F5F5"
     }
 
     localStorage.setItem("dark", JSON.stringify(dark));
@@ -75,7 +75,7 @@ var pontos;
 function inicioJogo(){
   areaJogo.start();
   personagemObj = new componente('#9966CC', 10, 120, 30, 30);
-  pontos = new componente("#9966CC", 10, 30, 'Consolas', '30px', 'texto');
+  pontos = new componente("#000", 10, 30, 'Consolas', '30px', 'texto');
 };
 
 let areaJogo = {
