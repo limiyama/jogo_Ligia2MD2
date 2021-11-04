@@ -3,12 +3,25 @@
 window.onload = function(){
   inicioJogo();
 
-  localStorage.corFundoDark = '#000';
-  localStorage.corDark = '#FFF';
+  function temas(){
+    let claro = {
+      canvas: "#FFF",
+      body: "#ccc",
+      botao: "#000"
+    }
 
-  localStorage.corFundoLight = '#FFF';
-  localStorage.corLight = '#000';
+    localStorage.setItem("claro", JSON.stringify(claro));
 
+    let dark = {
+      canvas: "#ccc",
+      body: "#000",
+      botao: "#FFF"
+    }
+
+    localStorage.setItem("dark", JSON.stringify(dark));
+  }
+
+  temas();
 
   document.querySelector("#esquerda").addEventListener("click", function(){
     esquerda();
@@ -30,21 +43,26 @@ window.onload = function(){
     setTimeout(parar, 1000);
   });
 
-  document.querySelector("#dark").addEventListener("click", function(){
-    document.querySelector("body").style.background = localStorage.corFundoDark;
-    document.querySelector("#subir").style.color = localStorage.corDark;
-    document.querySelector("#descer").style.color = localStorage.corDark;
-    document.querySelector("#esquerda").style.color = localStorage.corDark;
-    document.querySelector("#direita").style.color = localStorage.corDark;
+  document.querySelector("#light").addEventListener("click", function(){
+    let tema = JSON.parse(localStorage.getItem("claro"));
+    document.querySelector("body").style.background = tema.body;
+    document.querySelector("canvas").style.background = tema.canvas;
 
+    const botao = document.querySelectorAll(".seta");
+    Array.prototype.filter.call(botao, function(botao){
+      botao.style.color = tema.botao;
+    })
   });
 
-  document.querySelector("#light").addEventListener("click", function(){
-    document.querySelector("body").style.background = localStorage.corFundoLight;
-    document.querySelector("#subir").style.color = localStorage.corLight;
-    document.querySelector("#descer").style.color = localStorage.corLight;
-    document.querySelector("#esquerda").style.color = localStorage.corLight;
-    document.querySelector("#direita").style.color = localStorage.corLight;
+  document.querySelector("#dark").addEventListener("click", function(){
+    let tema = JSON.parse(localStorage.getItem("dark"));
+    document.querySelector("body").style.background = tema.body;
+    document.querySelector("canvas").style.background = tema.canvas;
+
+    const botao = document.querySelectorAll(".seta");
+    Array.prototype.filter.call(botao, function(botao){
+      botao.style.color = tema.botao;
+    })
   });
 }
 
@@ -56,8 +74,8 @@ var pontos;
 
 function inicioJogo(){
   areaJogo.start();
-  personagemObj = new componente('red', 10, 120, 30, 30);
-  pontos = new componente("#000", 10, 30, 'Consolas', '30px', 'texto');
+  personagemObj = new componente('#9966CC', 10, 120, 30, 30);
+  pontos = new componente("#9966CC", 10, 30, 'Consolas', '30px', 'texto');
 };
 
 let areaJogo = {
@@ -155,8 +173,8 @@ function atualizaAreaJogo(){
     minVazio = 50;
     maxVazio = 200;
     vazio = Math.floor(Math.random()*(maxVazio-minVazio+1)+minVazio);
-    obstaculo.push(new componente('green',x,0,altura,10));
-    obstaculo.push(new componente('green',x,altura + vazio,x - altura - vazio,10));
+    obstaculo.push(new componente('#95B963',x,0,altura,10));
+    obstaculo.push(new componente('#95B963',x,altura + vazio,x - altura - vazio,10));
   };
 
   for(i = 0; i < obstaculo.length; i++){
