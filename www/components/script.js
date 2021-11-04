@@ -7,7 +7,7 @@ window.onload = function(){
     let claro = {
       canvas: "#FFF",
       body: "#ccc",
-      botao: "#000"
+      botao: "#808080"
     }
 
     localStorage.setItem("claro", JSON.stringify(claro));
@@ -15,7 +15,7 @@ window.onload = function(){
     let dark = {
       canvas: "#ccc",
       body: "#000",
-      botao: "#FFF"
+      botao: "#808080"
     }
 
     localStorage.setItem("dark", JSON.stringify(dark));
