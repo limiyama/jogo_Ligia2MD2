@@ -3,6 +3,13 @@
 window.onload = function(){
   inicioJogo();
 
+  localStorage.corFundoDark = '#000';
+  localStorage.corDark = '#FFF';
+
+  localStorage.corFundoLight = '#FFF';
+  localStorage.corLight = '#000';
+
+
   document.querySelector("#esquerda").addEventListener("click", function(){
     esquerda();
     setTimeout(parar, 1000);
@@ -24,20 +31,20 @@ window.onload = function(){
   });
 
   document.querySelector("#dark").addEventListener("click", function(){
-    document.querySelector("body").style.background = "#000";
-    document.querySelector("#subir").style.color = "#FFF";
-    document.querySelector("#descer").style.color = "#FFF";
-    document.querySelector("#esquerda").style.color = "#FFF";
-    document.querySelector("#direita").style.color = "#FFF";
+    document.querySelector("body").style.background = localStorage.corFundoDark;
+    document.querySelector("#subir").style.color = localStorage.corDark;
+    document.querySelector("#descer").style.color = localStorage.corDark;
+    document.querySelector("#esquerda").style.color = localStorage.corDark;
+    document.querySelector("#direita").style.color = localStorage.corDark;
 
   });
 
   document.querySelector("#light").addEventListener("click", function(){
-    document.querySelector("body").style.background = "#FFF";
-    document.querySelector("#subir").style.color = "#000";
-    document.querySelector("#descer").style.color = "#000";
-    document.querySelector("#esquerda").style.color = "#000";
-    document.querySelector("#direita").style.color = "#000";
+    document.querySelector("body").style.background = localStorage.corFundoLight;
+    document.querySelector("#subir").style.color = localStorage.corLight;
+    document.querySelector("#descer").style.color = localStorage.corLight;
+    document.querySelector("#esquerda").style.color = localStorage.corLight;
+    document.querySelector("#direita").style.color = localStorage.corLight;
   });
 }
 
