@@ -7,40 +7,40 @@ window.onload = function(){
     let claro = {
       canvas: "#FFF",
       body: "#ccc",
-      botao: "#808080"
+      botao: "#fff"
     }
 
     localStorage.setItem("claro", JSON.stringify(claro));
 
     let dark = {
-      canvas: "#A9A9A9",
+      canvas: "#000",
       body: "#000",
-      botao: "#F5F5F5"
+      botao: "#ccc"
     }
 
     localStorage.setItem("dark", JSON.stringify(dark));
   }
 
   temas();
-
+  
   document.querySelector("#esquerda").addEventListener("click", function(){
     esquerda();
-    setTimeout(parar, 1000);
+    setTimeout(parar, 900);
   });
 
   document.querySelector("#subir").addEventListener("click", function(){
     subir();
-    setTimeout(parar, 1000);
+    setTimeout(parar, 900);
   });
 
   document.querySelector("#descer").addEventListener("click", function(){
     descer();
-    setTimeout(parar, 1000);
+    setTimeout(parar, 900);
   });
 
   document.querySelector("#direita").addEventListener("click", function(){
     direita();
-    setTimeout(parar, 1000);
+    setTimeout(parar, 900);
   });
 
   document.querySelector("#light").addEventListener("click", function(){
@@ -75,7 +75,7 @@ var pontos;
 function inicioJogo(){
   areaJogo.start();
   personagemObj = new componente('#9966CC', 10, 120, 30, 30);
-  pontos = new componente("#000", 10, 30, 'Consolas', '30px', 'texto');
+  pontos = new componente("#9966CC", 10, 30, 'Consolas', '30px', 'texto');
 };
 
 let areaJogo = {

@@ -14,9 +14,6 @@ button {
   height: 60px;
 }
 
-.botoes {
-  width: 100%;
-}
 
 .bi {
   width: 40px;
@@ -25,8 +22,11 @@ button {
 
 #dark, #light {
   margin-top: 30px;
-  margin-left: 15px;
-  margin-bottom: 60px;
-  width: 105%;
+  margin-bottom: 30px;
+  width: 155px;
+  height: 40px;
+}
+
+#reload {
   height: 40px;
 }
